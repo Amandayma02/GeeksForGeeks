@@ -1,0 +1,38 @@
+class Solution
+{
+    public int minNumber(int arr[], int N)
+    {
+    int i,sum=0,flag=0,ele=0;
+        
+        for(i=0;i<N;i++)
+        {
+            sum = sum+arr[i];
+        }
+        if(sum==1)
+        {
+            return 1;
+        }
+        while(check(sum)==1)
+        {
+            sum=sum+1;
+            ele=ele+1;
+
+        }
+        return ele;
+    }
+    
+
+int check(int sum)
+    {
+        int i;
+         for(i=2;i<=sum-1;i++)
+        {
+            if(sum%i==0)
+            {
+              return 1; 
+             }
+        }
+        
+    return 0;
+    }
+}
