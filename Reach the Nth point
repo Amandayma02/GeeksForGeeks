@@ -1,0 +1,19 @@
+class Solution
+{
+    public int nthPoint(int n)
+    {
+
+        int a =1;
+        int b =1;
+        double m =  Math.pow(10,9)+7;
+
+        for (int i=2; i<=n; i++){
+            int  c = (int) (Math.abs(a%m) + Math.abs(b%m));
+            b = a;
+            a = c;
+        }
+        return (int) (a% m);
+    }
+
+
+}
