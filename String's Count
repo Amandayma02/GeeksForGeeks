@@ -1,0 +1,25 @@
+class Solution 
+{ 
+    static long countStr(long n)
+	{
+	    // code here
+	    if(n==1) return 3;
+	    else if(n==2) return 8;
+	    
+	    // All a
+	    long res=1l;
+	    
+	    // One b or One c
+	    res+=2l*n;
+	    
+	    // One b and One c
+	    res+=n*1l*(n-1);
+	    
+	    // Two c
+	    res+=n*1l*(n-1)*0.5;
+	    
+	    // One b and Two c and remaining A
+	    res+=(n-1)*1l*(n-2)*n*0.5;
+	    return res;
+	}
+} 
