@@ -1,0 +1,44 @@
+
+class Solution {
+    public static int buyMaximumProducts(int n, int k, int[] price) {
+        // code here
+        
+        List<Pairs> p=new ArrayList<>();
+        
+        for(int i=0;i<n;i++){
+            p.add(new Pairs(price[i],i+1));
+        }
+        
+        // p.sort(Comparator.comparingInt(m -> m.prices));
+        
+        p.sort(Comparator.comparingInt(m->m.prices));
+        
+        
+        
+        int cnt=0;
+        
+        for(int i=0;i<n;i++){
+            int stockprice=p.get(i).prices;
+            int stocks=p.get(i).ind;
+            
+            if(stockprice*stocks<=k){
+                k-=stockprice*stocks;
+                cnt+=stocks;
+            }
+            else{
+                cnt+=k/stockprice;
+                k-=stockprice*(k/stockprice);
+            }
+        }
+        return cnt;
+    }
+    
+    static class Pairs{
+        int prices;
+        int ind;
+        Pairs(int p,int i){
+            prices=p;
+            ind=i;
+        }
+    }
+}
