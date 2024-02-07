@@ -1,0 +1,29 @@
+class GfG {
+    
+    int height(Node node, int a,int depth){
+        if(node==null)return 0;
+        if(node.data==a) return depth;
+        
+        int x=height(node.left, a,depth+1);
+        int y=height(node.right, a,depth+1);
+        
+        return x==0?y:x;  
+    }
+    
+    
+    Node f(Node node , int a , int b){
+        if(node==null ||node.data==a || node.data==b )  return node;
+        
+        Node left=f(node.left,a,b);
+        Node right=f(node.right,a,b);
+        
+        if(left==null)return right;
+        else if(right==null)return left;
+        return node;
+    }
+    
+    int findDist(Node root, int a, int b) {
+        Node tar=f(root,a,b);
+        return height(tar,a,0)+  height(tar,b,0);
+    }
+} 
